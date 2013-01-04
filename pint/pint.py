@@ -408,10 +408,10 @@ class UnitRegistry(object):
             self.add_from_file(filename)
 
     def __getattr__(self, item):
-        return self.Quantity(1, item)
+        return self.Quantity(1, item).convert_to_reference()
 
     def __getitem__(self, item):
-        return self._parse_expression(item)
+        return self._parse_expression(item).convert_to_reference()
 
     def add_unit(self, name, value, aliases=tuple(), **modifiers):
         """Add unit to the registry.
