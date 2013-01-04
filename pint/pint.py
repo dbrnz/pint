@@ -392,16 +392,14 @@ class UnitRegistry(object):
     :param force_ndarray: convert any input, scalar or not to a numpy.ndarray.
     """
 
-    #: Map unit name (string) to unit value (Quantity), and unit alias to canonical unit name
-    _UNITS = AliasDict()
-
-    #: Map prefix name (string) to prefix value (float), and unit alias to canonical prefix name
-    _PREFIXES = AliasDict({'': 1})
-
-    #: Map suffix name (string) to canonical , and unit alias to canonical unit name
-    _SUFFIXES = AliasDict({'': None, 's': ''})
-
     def __init__(self, filename='', force_ndarray=False):
+        #: Map unit name (string) to unit value (Quantity), and unit alias to canonical unit name
+        self._UNITS = AliasDict()
+        #: Map prefix name (string) to prefix value (float), and unit alias to canonical prefix name
+        self._PREFIXES = AliasDict({'': 1})
+        #: Map suffix name (string) to canonical , and unit alias to canonical unit name
+        self._SUFFIXES = AliasDict({'': None, 's': ''})
+
         self.Quantity = _build_quantity_class(self, force_ndarray)
         self._definition_files = []
         if filename == '':
