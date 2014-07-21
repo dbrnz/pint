@@ -8,3 +8,7 @@ docs/_build/
 build/
 dist/
 MANIFEST
+.tox
+
+# WebDAV file system cache files
+.DAV/
